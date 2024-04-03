@@ -7,7 +7,7 @@ const playerRoutes = require('./routes/playerRoutes.js');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 mongoose
   .connect(process.env.ATLAS_CONNECTION_STRING)
