@@ -1,26 +1,31 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
+const express = require('express');
+const { json } = require('express');
+const mongoose = require('mongoose');
+const playerRoutes = require('./routes/playerRoutes.js');
+
 dotenv.config();
 
-import express, { json } from 'express';
-import mongoose from 'mongoose';
-import playerRoutes from './routes/playerRoutes.js';
-
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
-mongoose.connect(process.env.ATLAS_CONNECTION_STRING);
-
-const connection = mongoose.connection;
-
-connection.once('open', () => {
-  console.log('MongoDB database connection established successfully');
-});
+mongoose
+  .connect(process.env.ATLAS_CONNECTION_STRING)
+  .then((success) => {
+    console.log('Successfully connected to database');
+  })
+  .catch((error) => {
+    console.log(error);
+    process.exit(1);
+  });
 
 app.use(json());
 
 app.get('/', (req, res) => {
-  res.send('Welcome to NBA Metrics! Check out our players data at /api/players');
-})
+  res.send(
+    'Welcome to NBA Metrics! Check out our players data at /api/players'
+  );
+});
 
 app.use('/api', playerRoutes);
 
