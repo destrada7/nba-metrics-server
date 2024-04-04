@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'Running build script for Node.js backend.' && npm prune --production"
   },
   "keywords": [],
   "author": "",
@@ -15,4 +15,8 @@
     "express": "^4.18.2",
     "mongoose": "^8.0.3"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 20acd58a65517bd577497a72e3acd65c306c2680
