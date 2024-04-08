@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const { json } = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 const playerRoutes = require('./routes/playerRoutes.js');
 
 dotenv.config();
@@ -18,6 +19,13 @@ mongoose
     console.log(error);
     process.exit(1);
   });
+
+app.use(
+  cors({
+    origin: 'https://nba-metrics-app.vercel.app',
+    optionsSuccessStatus: 200,
+  })
+);
 
 app.use(json());
 
