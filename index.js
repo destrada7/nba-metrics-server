@@ -22,7 +22,7 @@ mongoose
 
 app.use(
   cors({
-    origin: 'https://nba-metrics-app.vercel.app',
+    origin: 'https://nba-metrics-app.vercel.app/',
     optionsSuccessStatus: 200,
   })
 );
